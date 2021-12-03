@@ -4,9 +4,9 @@ import nl.bd.aoc.utils.FileUtils;
 
 import java.util.List;
 
-public class Solution1 {
+public class Solution2 {
     public static void main(String[] args) {
-        Solution1 solution1 = new Solution1();
+        Solution2 solution1 = new Solution2();
         solution1.run();
     }
 
@@ -22,6 +22,7 @@ public class Solution1 {
 
         int horizontal = 0;
         int depth = 0;
+        int aim = 0;
 
         for (String command : input) {
             String[] parsedCommand = command.split("\\s+");
@@ -33,12 +34,13 @@ public class Solution1 {
             switch (direction) {
                 case "forward":
                     horizontal = horizontal + unit;
+                    depth = depth + (aim * unit);
                     break;
                 case "down":
-                    depth = depth + unit;
+                    aim = aim + unit;
                     break;
                 case "up":
-                    depth = depth - unit;
+                    aim = aim - unit;
                     break;
                 default:
                     System.out.println("Invalid direction received: " + direction);
@@ -49,6 +51,7 @@ public class Solution1 {
         System.out.println("Result:");
         System.out.println("Horizontal position = " + horizontal);
         System.out.println("Final depth = " + depth);
+        System.out.println("Final aim = " + aim);
         System.out.println("Multiplication = " + (horizontal * depth));
     }
 }
