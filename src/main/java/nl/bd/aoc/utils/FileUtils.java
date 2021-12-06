@@ -23,6 +23,20 @@ public class FileUtils {
         return Collections.emptyList();
     }
 
+    public static String fileContent(String filename)
+    {
+        try {
+            String text = IOUtils.toString(FileUtils.class.getClassLoader().getResourceAsStream(filename),
+                    "UTF-8");
+
+            return text;
+        } catch (IOException e) {
+            System.err.println("Exception while reading input file: " + e.getMessage());
+        }
+
+        return "";
+    }
+
     public static List<Integer> readFromFileAsInteger(String filename)
     {
         return FileUtils.readFromFile(filename).stream().map(Integer::valueOf).toList();
