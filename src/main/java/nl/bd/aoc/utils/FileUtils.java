@@ -37,6 +37,11 @@ public class FileUtils {
         return "";
     }
 
+    public static List<Integer> readFromFileAndSplitAsInteger(String filename)
+    {
+        return Arrays.stream(FileUtils.fileContent(filename).split(",")).map(Integer::valueOf).toList();
+    }
+
     public static List<Integer> readFromFileAsInteger(String filename)
     {
         return FileUtils.readFromFile(filename).stream().map(Integer::valueOf).toList();
